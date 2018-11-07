@@ -21,7 +21,7 @@ def meu_tokenizer(string):
 
 def corretor(string):
     """"
-    :return: A STRING if a typo wasn't found, or a LIST of TUPLES of possibilties if a typo was found
+    :return: A STRING if a typo wasn't found, or a LIST of TUPLES with the possibilities (if a typo was found)
     """
 
     lista = set()
