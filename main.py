@@ -7,13 +7,20 @@ def run(string):
 
     corrigir = important_replaces(' '.join(montar_frase(frase_correta)))
 
-    print('Frase original: \n\n'
-          '%s'
-          '\n\n------------------------\n' % doc)
+    print(' => Frase original: \n\n'
+          '%s' % doc)
 
-    print('Frase corrigida: \n\n'
+    print('\n\n => Frase corrigida: \n\n'
           '%s'
-          '\n\n\n\n\n' % corrigir)
+          '\n\n' % corrigir)
+
+    correcao_com_pesos = important_replaces(' '.join(montar_frase(frase_correta, only_words=False)))
+
+    print(' => Frase corrigida com seu determinado peso: \n\n'
+          '%s'
+          '\n\n' % correcao_com_pesos)
+
+    print('\n\n------------------------------------')
 
 
 if __name__ == '__main__':

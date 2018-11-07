@@ -76,17 +76,17 @@ def parser(doc):
 
             if isinstance(worker, list):
                 # Coloring a token of red, on the initial string, where a typo was found
-                doc = doc.replace(token, f'\033[1;30;41m{token}\033[m')
+                doc = doc.replace(token, f'\033[1;41m{token}\033[m')
 
             frase_correta.append(worker)
         else:
             # It's a punctuation. It doesn't need to be parsed
             frase_correta.append(token)
 
+    print('\n\n------------------------------------')
     print(time.perf_counter() - ini)
-    pprint(frase_correta)
-
-    print('\n\n\n\n------------------------------------')
+    # pprint(frase_correta)
+    print('\n\n')
 
     return frase_correta, doc
 
