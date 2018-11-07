@@ -1,3 +1,7 @@
+ilumina
+digitar
+esqueci
+aquece
 legal
 gracejando
 voo
@@ -179,10 +183,11 @@ animado
 precederam
 remi-la
 futura
-enlevos-
+enlevos
 afetando
 achavam
 dizendo-lhe
+dizendo-lhes
 Moléstia
 exame
 vendo-o
@@ -414,6 +419,8 @@ radiante
 subsistência
 cera
 Janeiro
+exatamente
+Exatamente
 surpreendera
 castas
 missa
@@ -783,6 +790,7 @@ qualidades
 ratear
 interferência
 abraços
+abraço
 estranhara
 toucadas
 Entra
@@ -804,6 +812,14 @@ pulseira
 costumava
 requerido
 oferecer
+segunda-feira
+terça-feira
+quarta-feira
+quinta-feira
+sexta-feira
+sábado
+domingo
+turística
 será
 gargalhada
 terno
@@ -1462,7 +1478,6 @@ punhal
 remir-me
 pé
 detrás
-eh
 gêneros
 dissipasse
 plácidas
@@ -1652,7 +1667,6 @@ exerceu
 desfralda
 revestir-se
 espesso
-sábado
 enfeitiçados
 abandonava-se
 Sousa
@@ -1851,6 +1865,7 @@ partir
 excelentíssimo
 sinuosa
 aceitando-a
+top
 reservas
 enlace
 útil
@@ -1942,7 +1957,6 @@ consertava
 restam
 arrastado
 disfarçava
-Eh
 resolutamente
 corrigindo
 dó
@@ -3107,6 +3121,7 @@ tintas
 ferro
 mimosas
 Diana
+Argentina
 argentina
 diretamente
 apressado
@@ -3198,6 +3213,7 @@ tirava
 arrebatados
 hoje
 coxa
+é
 mantém
 réu
 psicológicos
@@ -3543,7 +3559,7 @@ supor
 indigna
 sorri
 triunfou
-tranquilidade-
+tranquilidade
 podes
 arremesso
 deslocada
@@ -3601,7 +3617,7 @@ Serve
 numerosa
 usar
 a
-rebaixando-
+rebaixando
 silfidez
 disputar-lhe
 grosseira
@@ -3630,7 +3646,7 @@ turba
 aljofrados
 borracha
 recaindo
-mesma-
+mesma
 galanteios
 divertir-nos
 comparar-se
@@ -4179,7 +4195,7 @@ enfermeira
 Calculava-se
 ambos
 rindo
-quebrar-
+quebrar
 insultar
 cortina
 noivos
@@ -4486,7 +4502,7 @@ escutava
 recusa
 partilhar
 borboletear
-referiam-
+referiam
 entes
 afagava
 Carecemos
@@ -4650,7 +4666,6 @@ suplicar-me
 Norma
 colhidos
 mordia
-é.
 Certamente
 serei
 entrarei
@@ -6133,7 +6148,6 @@ casado
 Curtiu
 palestra
 corte
-boceta
 saltou
 carioca
 soberbamente
@@ -6246,7 +6260,7 @@ obtidos
 Recorreu
 escoarem-se
 Sentia-se
-milagre-
+milagre
 indicara
 discreta
 afoutamente
@@ -6830,7 +6844,6 @@ transes
 ondeava
 engenhoso
 escolhido
-tenção
 recompensar
 concluir
 tirando
@@ -7550,7 +7563,7 @@ abandono
 chegara
 ergueu-se
 substituir
-Apenas-
+Apenas
 Convém-me
 tirocínio
 humilhasse
@@ -7693,7 +7706,7 @@ Nelas
 Tratemos
 Aí
 pareceu
-quinze-
+quinze
 delicadamente
 distraíra-se
 Não
@@ -7823,7 +7836,7 @@ miseráveis
 Tivesse-o
 inebriar-me
 deve-me
-desconhecida.-
+desconhecida
 harmoniosa
 brandiu
 acreditava
@@ -8797,7 +8810,6 @@ brumas
 colocara
 Atinou
 ciúme
-..
 contasse
 deduzindo
 duvidava
@@ -9081,7 +9093,6 @@ demorado
 ágil
 necessitava
 curvou-se
-...
 obrigara
 janelas
 diamante
@@ -9295,7 +9306,7 @@ acompanhava
 arrancá-lo
 arranjava
 cantar
-contos.-
+contos
 aguardar
 primitiva
 aguardasse
@@ -9311,7 +9322,7 @@ satisfazê-lo
 Chama-se
 aponte
 contenta-se
-notas-
+notas
 fuma
 entregar-se
 Deslumbrante
@@ -10417,7 +10428,7 @@ obriguei
 evasivas
 semi-secular
 autos
-desvendando-
+desvendando
 escolha
 formas
 desprezo
@@ -11511,7 +11522,22 @@ ocultar-se
 despender
 relutaram
 Envolvia
-domingo
+Domingos
+Everton
+Fernando
+Cléber
+Lucas
+Amanda
+Murilo
+Yuri
+Vinícius
+Henrique
+Augusto
+Ricardo
+Eduardo
+Thaís
+Débora
+Bruna
 dir-se-ia
 rumas
 render
@@ -11663,6 +11689,7 @@ atrair
 porta
 caderneta
 hesitavam
+louca
 lentos
 peripécias
 arrecadar
@@ -11974,7 +12001,6 @@ remoque
 zombando
 recebi
 pão
-é
 aveludado
 fizeram
 insultantes
@@ -12558,7 +12584,7 @@ cerrou
 excitar
 passado
 Deve
-da-
+da
 Brincava
 diria
 separa
@@ -12838,6 +12864,14 @@ gostaria
 maravilhoso
 maravilhosa
 maravilha
-olá
+maravilhado
+fiquei
 Olá
 ok
+Iraque
+França
+EUA
+USA
+Canadá
+México
+fronteira

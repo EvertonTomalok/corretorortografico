@@ -1,4 +1,4 @@
-from controllers import *
+from metodos import *
 
 
 def run(string):
@@ -26,10 +26,10 @@ def run(string):
 if __name__ == '__main__':
 
     while True:
-        doc = input('Digite uma frase para verificação [ :q para sair ]: \n')
+        doc_input = input('Digite uma frase para verificação [ :q para sair ]: \n\n    ')
 
-        if doc == ':q':
+        if doc_input == ':q':
             break
 
         else:
-            run(doc)
+            run(doc_input)
