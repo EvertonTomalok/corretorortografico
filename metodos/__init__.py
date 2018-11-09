@@ -6,7 +6,7 @@ import time
 
 
 # You can load your dictionary here
-with open('files/dic_senhora.txt', 'r') as fp:
+with open('files/new_dict_plus.txt', 'r') as fp:
     dicionario = set(fp.read().split('\n'))
 
 
@@ -21,7 +21,7 @@ def meu_tokenizer(string):
 
 def corretor(string):
     """"
-    :return: A STRING if a typo wasn't found, or a LIST of TUPLES with the possibilities (if a typo was found)
+    :return: A STRING if a typo wasn't found, or a LIST of TUPLES of possibilties if a typo was found
     """
 
     lista = set()
