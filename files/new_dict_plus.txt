@@ -4,6 +4,11 @@ Bárbara
 tabelião
 pobre-diabo
 sentasse
+cachorro
+galinha
+papagaio
+pombo
+cavalo
 gêneros
 sagrada
 seleção
@@ -13578,7 +13583,6 @@ guardava
 8:500
 Tarde
 jogaram
-tenção
 traçadas
 cumpri-la
 Porta
