@@ -1,0 +1,3 @@
+python-Levenshtein==0.12.0
+fuzzywuzzy==0.17.0
+spacy==2.0.18
