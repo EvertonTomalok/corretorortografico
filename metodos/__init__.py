@@ -1,13 +1,55 @@
-import jellyfish as jf
+#import jellyfish as jf
+import Levenshtein
 from fuzzywuzzy import fuzz
 from string import punctuation
 import re
 import time
+from collections import namedtuple
 
 
-# You can load your dictionary here
-with open('files/new_dict_plus.txt', 'r') as fp:
+Box = namedtuple('Box', 'string first second')
+
+
+with open('files/new_dict_plus_v2.txt', 'r') as fp:
     dicionario = set(fp.read().split('\n'))
+
+
+all_boxes = []
+
+
+def get_first(text):
+    if len(text) > 0:
+        return text[0]
+    return "Null"
+
+
+def get_second(text):
+    if len(text) > 1:
+        return text[1]
+    return "Null"
+
+
+for word in dicionario:
+    all_boxes.append(Box(word, get_first(word), get_second(word)))
+
+all_boxes = set(filter(lambda x: x.first != 'Null', all_boxes))
+
+
+def gerar_dicionario_de_busca(primeira_letra, segunda_letra):
+    firsts = []
+    seconds = []
+
+    global all_boxes
+
+    for element in all_boxes:
+        if element.first == primeira_letra:
+            firsts.append(element.string)
+        if element.second == segunda_letra:
+            seconds.append(element.string)
+
+    firsts.extend(seconds)
+
+    return firsts
 
 
 def meu_tokenizer(string):
@@ -26,12 +68,19 @@ def corretor(string):
 
     lista = set()
 
-    if string.lower() in dicionario or string.title() in dicionario:
+    if string in dicionario or string.title() in dicionario:
         return string
 
     else:
-        for frase in dicionario:
-            distance = jf.levenshtein_distance(string, frase)
+
+        primeira_letra = get_first(string)
+        segunda_letra = get_first(string)
+
+        dicionario_de_busca = gerar_dicionario_de_busca(primeira_letra, segunda_letra)
+
+        for frase in dicionario_de_busca:
+            # distance = jf.levensehtein_distance(string, frase)
+            distance = Levenshtein.distance(string, frase)
             lista.add((distance, frase))
 
         distancia_inicial = 0
@@ -69,7 +118,11 @@ def parser(doc):
     tokens = meu_tokenizer(doc)
 
     for token in tokens:
-        if token not in punctuation:
+
+        if token[0].isdigit():
+            frase_correta.append(token)
+
+        elif token not in punctuation:
 
             worker = corretor(token)
 
@@ -78,6 +131,7 @@ def parser(doc):
                 doc = doc.replace(token, f'\033[1;41m{token}\033[m')
 
             frase_correta.append(worker)
+
         else:
             # It's a punctuation. It doesn't need to be parsed
             frase_correta.append(token)
