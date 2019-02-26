@@ -5,12 +5,14 @@ from string import punctuation
 import re
 import time
 from collections import namedtuple
+import functools
 
 
 Box = namedtuple('Box', 'string first second')
 
 
-with open('files/new_dict_plus_v2.txt', 'r') as fp:
+# with open('files/new_dict_plus_v2.txt', 'r') as fp:
+with open('files/pt-BR.txt', 'r') as fp:
     dicionario = set(fp.read().split('\n'))
 
 
@@ -61,6 +63,7 @@ def meu_tokenizer(string):
     return re.findall(pattern, string)
 
 
+@functools.lru_cache()
 def corretor(string):
     """"
     :return: A STRING if a typo wasn't found, or a LIST of TUPLES of possibilties if a typo was found
@@ -68,7 +71,7 @@ def corretor(string):
 
     lista = set()
 
-    if string in dicionario or string.title() in dicionario:
+    if string.lower() in dicionario:
         return string
 
     else:
