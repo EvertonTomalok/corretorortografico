@@ -6,14 +6,17 @@ import re
 import time
 from collections import namedtuple
 import functools
+import json
 
 
 Box = namedtuple('Box', 'string first second')
 
 
-# with open('files/new_dict_plus_v2.txt', 'r') as fp:
-with open('files/pt-BR.txt', 'r') as fp:
+with open('files/new_dict_plus_v3.txt', 'r') as fp:
     dicionario = set(fp.read().split('\n'))
+
+with open('files/internetes.json', 'r') as fp:
+    internetes = json.load(fp, encoding='utf-8')
 
 
 all_boxes = []
@@ -71,8 +74,11 @@ def corretor(string):
 
     lista = set()
 
-    if string.lower() in dicionario:
+    if string.lower() in dicionario or string.title() in dicionario:
         return string
+
+    elif string.lower() in internetes:
+        return [(100, internetes[string])]
 
     else:
 
