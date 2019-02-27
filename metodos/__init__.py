@@ -57,6 +57,12 @@ def gerar_dicionario_de_busca(primeira_letra, segunda_letra):
     return firsts
 
 
+def starts_with_consonant(string):
+    if re.search(r'^[aeiou].*', string, re.IGNORECASE):
+        return True
+    return False
+
+
 def meu_tokenizer(string):
     """
     Just a tokenizer created using module 're'
@@ -74,40 +80,49 @@ def corretor(string):
 
     lista = set()
 
-    if string.lower() in dicionario or string.title() in dicionario:
-        return string
-
-    elif string.lower() in internetes:
+    if string.lower() in internetes:
         return [(100, internetes[string.lower()])]
 
-    else:
+    elif string.lower() in dicionario or string.title() in dicionario:
+        return string
 
-        primeira_letra = get_first(string)
-        segunda_letra = get_first(string)
+    elif starts_with_consonant(string):
 
-        dicionario_de_busca = gerar_dicionario_de_busca(primeira_letra, segunda_letra)
+        hstring = 'h' + string
 
-        for frase in dicionario_de_busca:
-            # distance = jf.levensehtein_distance(string, frase)
-            distance = Levenshtein.distance(string, frase)
-            lista.add((distance, frase))
+        if hstring.lower() in dicionario or hstring.title() in dicionario:
 
-        distancia_inicial = 0
-        lista_new = list()
+            correct = hstring.lower() if string.islower() else hstring.title()
+            return [(100, correct)]
 
-        for distance, frase in sorted(lista):
+        else:
 
-            if distancia_inicial == 0:
-                distancia_inicial = distance
+            primeira_letra = get_first(string)
+            segunda_letra = get_first(string)
 
-            elif distance > distancia_inicial:
-                break
+            dicionario_de_busca = gerar_dicionario_de_busca(primeira_letra, segunda_letra)
 
-            ratio = fuzz.ratio(string, frase)
+            for frase in dicionario_de_busca:
+                # distance = jf.levensehtein_distance(string, frase)
+                distance = Levenshtein.distance(string, frase)
+                lista.add((distance, frase))
 
-            lista_new.append((ratio, frase))
+            distancia_inicial = 0
+            lista_new = list()
 
-        return sorted(lista_new, reverse=True)
+            for distance, frase in sorted(lista):
+
+                if distancia_inicial == 0:
+                    distancia_inicial = distance
+
+                elif distance > distancia_inicial:
+                    break
+
+                ratio = fuzz.ratio(string, frase)
+
+                lista_new.append((ratio, frase))
+
+            return sorted(lista_new, reverse=True)
 
 
 def parser(doc):
