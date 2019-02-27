@@ -57,7 +57,7 @@ def gerar_dicionario_de_busca(primeira_letra, segunda_letra):
     return firsts
 
 
-def starts_with_consonant(string):
+def starts_with_vowel(string):
     if re.search(r'^[aeiou].*', string, re.IGNORECASE):
         return True
     return False
@@ -72,7 +72,7 @@ def meu_tokenizer(string):
     return re.findall(pattern, string)
 
 
-@functools.lru_cache()
+@functools.lru_cache(1024)
 def corretor(string):
     """"
     :return: A STRING if a typo wasn't found, or a LIST of TUPLES of possibilties if a typo was found
@@ -86,7 +86,7 @@ def corretor(string):
     elif string.lower() in dicionario or string.title() in dicionario:
         return string
 
-    elif starts_with_consonant(string):
+    elif starts_with_vowel(string):
 
         hstring = 'h' + string
 
