@@ -12,7 +12,7 @@ import json
 Box = namedtuple('Box', 'string first second')
 
 
-with open('files/new_dict_plus_v3.txt', 'r') as fp:
+with open('files/new_dict_plus_v2.txt', 'r') as fp:
     dicionario = set(fp.read().split('\n'))
 
 with open('files/internetes.json', 'r') as fp:
@@ -78,7 +78,7 @@ def corretor(string):
         return string
 
     elif string.lower() in internetes:
-        return [(100, internetes[string])]
+        return [(100, internetes[string.lower()])]
 
     else:
 

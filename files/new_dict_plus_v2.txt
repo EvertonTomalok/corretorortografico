@@ -7947,7 +7947,6 @@ pafúncios
 Gancho
 Jean-Bertrand
 implicado
-nao
 lembrarmos
 712-6
 visor
@@ -65794,7 +65793,6 @@ Carestia
 escolas
 fluminense
 Berlinck
-Naoum
 prejudicadas
 modernizou
 hospedado
