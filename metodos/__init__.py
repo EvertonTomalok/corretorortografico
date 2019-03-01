@@ -1,4 +1,3 @@
-#import jellyfish as jf
 import Levenshtein
 from fuzzywuzzy import fuzz
 from string import punctuation
@@ -58,7 +57,7 @@ def gerar_dicionario_de_busca(primeira_letra, segunda_letra):
 
 
 def starts_with_vowel(string):
-    if re.search(r'^[aeiou].*', string, re.IGNORECASE):
+    if re.search(r'^[aeiouáéíóú].*', string, re.IGNORECASE):
         return True
     return False
 
@@ -72,15 +71,49 @@ def meu_tokenizer(string):
     return re.findall(pattern, string)
 
 
+def calculo_distancia(string):
+
+    lista = set()
+
+    if len(string) > 3:
+        primeira_letra = get_first(string)
+        segunda_letra = get_first(string)
+        dicionario_de_busca = gerar_dicionario_de_busca(primeira_letra, segunda_letra)
+
+        for frase in dicionario_de_busca:
+            distance = Levenshtein.distance(string, frase)
+            lista.add((distance, frase))
+    else:
+        for frase in dicionario:
+            distance = Levenshtein.distance(string, frase)
+            lista.add((distance, frase))
+
+    distancia_inicial = 0
+    lista_new = list()
+
+    for distance, frase in sorted(lista):
+
+        if distancia_inicial == 0:
+            distancia_inicial = distance
+
+        elif distance > distancia_inicial:
+            break
+
+        ratio = fuzz.ratio(string, frase)
+
+        lista_new.append((ratio, frase))
+
+    return sorted(lista_new, reverse=True)
+
+
 @functools.lru_cache(1024)
 def corretor(string):
     """"
     :return: A STRING if a typo wasn't found, or a LIST of TUPLES of possibilties if a typo was found
     """
 
-    lista = set()
-
     if string.lower() in internetes:
+        print(internetes[string.lower()])
         return [(100, internetes[string.lower()])]
 
     elif string.lower() in dicionario or string.title() in dicionario:
@@ -96,33 +129,10 @@ def corretor(string):
             return [(100, correct)]
 
         else:
+            return calculo_distancia(string)
 
-            primeira_letra = get_first(string)
-            segunda_letra = get_first(string)
-
-            dicionario_de_busca = gerar_dicionario_de_busca(primeira_letra, segunda_letra)
-
-            for frase in dicionario_de_busca:
-                # distance = jf.levensehtein_distance(string, frase)
-                distance = Levenshtein.distance(string, frase)
-                lista.add((distance, frase))
-
-            distancia_inicial = 0
-            lista_new = list()
-
-            for distance, frase in sorted(lista):
-
-                if distancia_inicial == 0:
-                    distancia_inicial = distance
-
-                elif distance > distancia_inicial:
-                    break
-
-                ratio = fuzz.ratio(string, frase)
-
-                lista_new.append((ratio, frase))
-
-            return sorted(lista_new, reverse=True)
+    else:
+        return calculo_distancia(string)
 
 
 def parser(doc):
