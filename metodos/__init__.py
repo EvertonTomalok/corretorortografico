@@ -6,12 +6,14 @@ import time
 from collections import namedtuple
 import functools
 import json
+from metodos.stopwords import STOP_WORDS
+from metodos.num import like_num
 
 
 Box = namedtuple('Box', 'string first second')
 
 
-with open('files/new_dict_plus_v3.txt', 'r') as fp:
+with open('files/new_dict_plus_v2.txt', 'r') as fp:
     dicionario = set(fp.read().split('\n'))
 
 with open('files/internetes.json', 'r') as fp:
@@ -115,6 +117,9 @@ def corretor(string):
     if string.lower() in internetes:
         print(internetes[string.lower()])
         return [(100, internetes[string.lower()])]
+
+    if like_num(string.lower()) or string.lower() in STOP_WORDS:
+        return string
 
     if string.lower() in dicionario or string.title() in dicionario:
         return string
