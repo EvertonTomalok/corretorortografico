@@ -115,7 +115,6 @@ def corretor(string):
     """
 
     if string.lower() in internetes:
-        print(internetes[string.lower()])
         return [(100, internetes[string.lower()])]
 
     if like_num(string.lower()) or string.lower() in STOP_WORDS:
