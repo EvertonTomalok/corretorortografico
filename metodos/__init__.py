@@ -11,7 +11,7 @@ import json
 Box = namedtuple('Box', 'string first second')
 
 
-with open('files/new_dict_plus_v2.txt', 'r') as fp:
+with open('files/new_dict_plus_v3.txt', 'r') as fp:
     dicionario = set(fp.read().split('\n'))
 
 with open('files/internetes.json', 'r') as fp:
@@ -116,18 +116,28 @@ def corretor(string):
         print(internetes[string.lower()])
         return [(100, internetes[string.lower()])]
 
-    elif string.lower() in dicionario or string.title() in dicionario:
+    if string.lower() in dicionario or string.title() in dicionario:
         return string
 
-    elif starts_with_vowel(string):
+    if starts_with_vowel(string):
 
         hstring = 'h' + string
 
-        if hstring.lower() in dicionario or hstring.title() in dicionario:
+        if hstring.lower() in dicionario or hstring.title() in dicionario or hstring.capitalize() in dicionario:
 
             correct = hstring.lower() if string.islower() else hstring.title()
             return [(100, correct)]
+        else:
+            return calculo_distancia(string)
 
+    if string.lower().startswith('se'):
+
+        cstring = 'c' + string[1:]
+
+        if cstring.lower() in dicionario or cstring.title() in dicionario:
+
+            correct = cstring.lower() if string.islower() else cstring.title()
+            return [(100, correct)]
         else:
             return calculo_distancia(string)
 
