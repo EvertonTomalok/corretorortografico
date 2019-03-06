@@ -17,3 +17,11 @@ Um exemplo de implementação de um corretor ortográfico.
         - make
         - pipenv run python main.py
     
+ ### Instalação via Pip
+ 
+    Abra um terminal, na localização em que estão os arquivos
+    
+    digite: 
+        - pip install -r requirements.txt 
+        - python main.py
+   
