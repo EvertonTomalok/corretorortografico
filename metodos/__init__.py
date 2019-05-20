@@ -6,7 +6,7 @@ import time
 from collections import namedtuple
 import functools
 import json
-from metodos.stopwords import STOP_WORDS
+from metodos.stopwords import is_stop
 from metodos.num import like_num
 
 
@@ -117,7 +117,7 @@ def corretor(string):
     if string.lower() in internetes:
         return [(100, internetes[string.lower()])]
 
-    if like_num(string.lower()) or string.lower() in STOP_WORDS:
+    if like_num(string.lower()) or is_stop(string.lower()):
         return string
 
     if string.lower() in dicionario or string.title() in dicionario:

@@ -42,3 +42,9 @@ vai vais valor veja vem vens ver vez vezes vinda vindo vinte você vocês vos vo
 vossas vosso vossos vários vão vêm vós
 zero
 """.split())
+
+
+def is_stop(token):
+    if token in STOP_WORDS:
+        return True
+    return False
