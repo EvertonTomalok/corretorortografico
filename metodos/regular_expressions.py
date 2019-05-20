@@ -26,17 +26,19 @@ def rule_1(string):
 
 def rule_2(string):
     if re.search(r'(\b\w*)ç(\B)', string, re.IGNORECASE):
-        return re.sub(r'(\b\w*)ç(\B)', r'\1#\2', string, re.IGNORECASE)
-    elif re.search(r'(\b)s([aáâãeéêiíoóôõuú]\w*\b)', string, re.IGNORECASE):
-        return re.sub(r'(\b)s([aáâãeéêiíoóôõuú]\w*\b)', r'\1#\2', string, re.IGNORECASE)
-    elif re.search(r"(\B)[nlrs]s([aáâãeéêiíoóôõuú]\w*\b)", string, re.IGNORECASE):
-        return re.sub(r"(\B)[nlrs]s([aáâãeéêiíoóôõuú]\w*\b)", r"\1#\2", string, re.IGNORECASE)
-    elif re.search(r'(\B)[sx]c([eéêií]\w*\b)'):
-        return re.sub(r'(\B)[sx]c([eéêií]\w*\b)', r'\1#\2', string, re.IGNORECASE)
-    elif re.search(r"(\b(au))x([ií]\B)", string, re.IGNORECASE):
-        return re.sub(r"(\b(au))x([ií]\B)", r"\1#\3", string, re.IGNORECASE)
-    else:
-        return None
+        string = re.sub(r'(\b\w*)ç(\B)', r'\1#\2', string, re.IGNORECASE)
+    if re.search(r'(\b)s([aáâãeéêiíoóôõuú]\w*\b)', string, re.IGNORECASE):
+        string = re.sub(r'(\b)s([aáâãeéêiíoóôõuú]\w*\b)', r'\1#\2', string, re.IGNORECASE)
+    if re.search(r'(\B)ss([aáâãeéêiíoóôõuú]\w*\b)', string, re.IGNORECASE):
+        string = re.sub(r'(\b)s([aáâãeéêiíoóôõuú]\w*\b)', r'\1#\2', string, re.IGNORECASE)
+    if re.search(r"(\B)[nlrs]s([aáâãeéêiíoóôõuú]\w*\b)", string, re.IGNORECASE):
+        string = re.sub(r"(\B)[nlrs]s([aáâãeéêiíoóôõuú]\w*\b)", r"\1#\2", string, re.IGNORECASE)
+    if re.search(r'(\B)[sx]c([eéêií]\w*\b)', string, re.IGNORECASE):
+        string = re.sub(r'(\B)[sx]c([eéêií]\w*\b)', r'\1#\2', string, re.IGNORECASE)
+    if re.search(r"(\b(au))x([ií]\B)", string, re.IGNORECASE):
+        string = re.sub(r"(\b(au))x([ií]\B)", r"\1#\3", string, re.IGNORECASE)
+
+    return string
 
 
 def rule_3(string):
