@@ -8,30 +8,23 @@ def rule_1(string):
     elif re.search(r"(?<=\w)coes\b", string):
         return re.sub(r"(?<=\w)(coes)\b", r"ções", string)
     else:
-        return string
+        if re.search(r"(qu?|ku)", string):
+            return re.sub(r"(qu?|ku)", r"qu", string)
+        else:
+            match = re.search(r'(?<=\w)(k)[aáãâoôóõuú]', string)
+
+            if match:
+                start, end = match.span()
+                value = match.group()
+                replace_value = list(value.replace("k", "c"))
+                palavra = list(string)
+                palavra[start:end] = replace_value
+                return "".join(palavra)
+            else:
+                return string
 
 
 def rule_2(string):
-    if re.search(r"(qu?|ku)", string):
-        return re.sub(r"(qu?|ku)", r"qu", string)
-
-
-def rule_3(string):
-
-    match = re.search(r'(?<=\w)(k)[aáãâoôóõuú]', string)
-
-    if match:
-        start, end = match.span()
-        value = match.group()
-        replace_value = list(value.replace("k", "c"))
-        palavra = list(string)
-        palavra[start:end] = replace_value
-        return "".join(palavra)
-    else:
-        return string
-
-
-def rule_4(string):
     if re.search(r'(\b\w*)ç(\B)', string, re.IGNORECASE):
         return re.sub(r'(\b\w*)ç(\B)', r'\1#\2', string, re.IGNORECASE)
     elif re.search(r'(\b)s([aáâãeéêiíoóôõuú]\w*\b)', string, re.IGNORECASE):
@@ -46,7 +39,7 @@ def rule_4(string):
         return string
 
 
-def rule_5(string):
+def rule_3(string):
     if re.search(r'(\B)[xs]([bdfgklmnpqrtv]\w*\b)', string, re.IGNORECASE):
         return re.sub(r'(\B)[xs]([bdfgklmnpqrtv]\w*\b)', r'\1$\2', string, re.IGNORECASE)
     elif re.search(r'(\B)[sx]c([aáâãoóôõuú]\w*\b)', string, re.IGNORECASE):
@@ -57,7 +50,7 @@ def rule_5(string):
         return string
 
 
-def rule_6(string):
+def rule_4(string):
     if re.search(r'(\b\w*)[sc]h(\B)', string, re.IGNORECASE):
         return re.sub(r'(\b\w*)[sc]h(\B)', r'\1%\2', string, re.IGNORECASE)
     elif re.search(r"(\b\w*[aáeéêoóôuú][i])x(\B)", string, re.IGNORECASE):
