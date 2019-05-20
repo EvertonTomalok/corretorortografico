@@ -64,6 +64,17 @@ def rule_4(string):
     return string
 
 
+def rule_5(string):
+    if re.search(r'(\B[aáâeéêiíoóôuú])s([aáâãeéêiíoóôõuú]\w*\b)', string, re.IGNORECASE):
+        return re.sub(r'(\B[aáâeéêiíoóôuú])s([aáâãeéêiíoóôõuú]\w*\b)', r"\1&\2", string, re.IGNORECASE)
+    elif re.search(r'(\b\w*)z([aáâãeéêiíoóôõuú]\w*\b)',  string, re.IGNORECASE):
+        return re.sub(r'(\b\w*)z([aáâãeéêiíoóôõuú]\w*\b)',  r"\1&\2", string, re.IGNORECASE)
+    elif re.search(r'(\b\w*[eê])x([aáâãeéêiíoóôõuú]\B)', string, re.IGNORECASE):
+        return re.sub(r'(\b\w*[eê])x([aáâãeéêiíoóôõuú]\B)', r"\1&\2", string, re.IGNORECASE)
+    else:
+        return string
+
+
 if __name__ == '__main__':
 
     corrected = getattr(sys.modules[__name__], "rule_%s" % sys.argv[1])(sys.argv[2])
