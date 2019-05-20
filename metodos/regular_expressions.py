@@ -3,25 +3,23 @@ import sys
 
 
 def rule_1(string):
-    if re.search(r"(?<=\w)cao\b", string):
-        return re.sub(r"(?<=\w)cao\b", "ção", string)
-    elif re.search(r"(?<=\w)coes\b", string):
-        return re.sub(r"(?<=\w)(coes)\b", r"ções", string)
-    else:
-        if re.search(r"(qu?|ku)", string):
-            return re.sub(r"(qu?|ku)", r"qu", string)
-        else:
-            match = re.search(r'(?<=\w)(k)[aáãâoôóõuú]', string)
+    if re.search(r'(\b)(ku?|qu?)(\w*)', string, re.IGNORECASE):
+        string = re.sub(r'(\b)(ku?|qu?)(\w*)', r'\1qu\3', string, re.IGNORECASE)
+    if re.search(r"(?<=\w)cao\b", string, re.IGNORECASE):
+        string = re.sub(r"(?<=\w)cao\b", "ção", string, re.IGNORECASE)
+    if re.search(r"(?<=\w)coes\b", string, re.IGNORECASE):
+        string = re.sub(r"(?<=\w)(coes)\b", r"ções", string, re.IGNORECASE)
 
-            if match:
-                start, end = match.span()
-                value = match.group()
-                replace_value = list(value.replace("k", "c"))
-                palavra = list(string)
-                palavra[start:end] = replace_value
-                return "".join(palavra)
-            else:
-                return None
+    match = re.search(r'(?<=\w)(k)[aáãâoôóõuú]', string, re.IGNORECASE)
+
+    if match:
+        start, end = match.span()
+        value = match.group()
+        replace_value = list(value.replace("k", "c"))
+        palavra = list(string)
+        palavra[start:end] = replace_value
+        string = "".join(palavra)
+    return string
 
 
 def rule_2(string):
@@ -30,7 +28,7 @@ def rule_2(string):
     if re.search(r'(\b)s([aáâãeéêiíoóôõuú]\w*\b)', string, re.IGNORECASE):
         string = re.sub(r'(\b)s([aáâãeéêiíoóôõuú]\w*\b)', r'\1#\2', string, re.IGNORECASE)
     if re.search(r'(\B)ss([aáâãeéêiíoóôõuú]\w*\b)', string, re.IGNORECASE):
-        string = re.sub(r'(\b)s([aáâãeéêiíoóôõuú]\w*\b)', r'\1#\2', string, re.IGNORECASE)
+        string = re.sub(r'(\b)ss([aáâãeéêiíoóôõuú]\w*\b)', r'\1#\2', string, re.IGNORECASE)
     if re.search(r"(\B)[nlrs]s([aáâãeéêiíoóôõuú]\w*\b)", string, re.IGNORECASE):
         string = re.sub(r"(\B)[nlrs]s([aáâãeéêiíoóôõuú]\w*\b)", r"\1#\2", string, re.IGNORECASE)
     if re.search(r'(\B)[sx]c([eéêií]\w*\b)', string, re.IGNORECASE):
