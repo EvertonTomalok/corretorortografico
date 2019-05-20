@@ -82,7 +82,28 @@ def rule_6(string):
         return None
 
 
+def rule_7(string):
+    if re.search(r"(\B)[aáeéêiíoóô][lu]([bcdfgjklmnpqrstvxz]\B|\b)", string, re.IGNORECASE):
+        return re.sub(r"(\B)[aáeéêiíoóô][lu]([bcdfgjklmnpqrstvxz]\B|\b)", r"\1@\2", string, re.IGNORECASE)
+    else:
+        return None
+
+
+def rule_8(string):
+    if re.search(r'(\B)[mn]([pb]\B)', string, re.IGNORECASE):
+        return re.sub(r'(\B)[mn]([pb]\B)', r"\1!\2", string, re.IGNORECASE)
+    else:
+        return None
+
+
+def rule_9(string):
+    if re.search(r'([bcdfgkptv])[rl]([aáâãeéêiíoóôõuú]\w*\b)', string, re.IGNORECASE):
+        return re.sub(r'([bcdfgkptv])[rl]([aáâãeéêiíoóôõuú]\w*\b)', r"\1!\2", string, re.IGNORECASE)
+    else:
+        return None
+
+
 if __name__ == '__main__':
 
     corrected = getattr(sys.modules[__name__], "rule_%s" % sys.argv[1])(sys.argv[2])
-    print(f"FRASE '{sys.argv[2]}' -> \033[32m {corrected if corrected else 'NÃO ALTERADO'} \033[m")
+    print(f"FRASE '{sys.argv[2]}' -> \033[3 {'2m ' + corrected if corrected else '1m NÃO ALTERADO'} \033[m")
