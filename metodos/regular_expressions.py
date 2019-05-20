@@ -21,7 +21,7 @@ def rule_1(string):
                 palavra[start:end] = replace_value
                 return "".join(palavra)
             else:
-                return string
+                return None
 
 
 def rule_2(string):
@@ -36,7 +36,7 @@ def rule_2(string):
     elif re.search(r"(\b(au))x([ií]\B)", string, re.IGNORECASE):
         return re.sub(r"(\b(au))x([ií]\B)", r"\1#\3", string, re.IGNORECASE)
     else:
-        return string
+        return None
 
 
 def rule_3(string):
@@ -47,7 +47,7 @@ def rule_3(string):
     elif re.search(r'(\B)[sz]([gmv]\B)', string, re.IGNORECASE):
         return re.sub(r'(\B)[sz]([gmv]\B)', r'\1$\2', string, re.IGNORECASE)
     else:
-        return string
+        return None
 
 
 def rule_4(string):
@@ -61,7 +61,7 @@ def rule_4(string):
         return re.sub(r"(\b|\Bn)x(\B)", r"\1%\2", string, re.IGNORECASE)
     elif re.search(r"(\B((a)|(e)|(i)|(o)|(u)))x(\1|\2|\3|\4|\5\w*\b)", string, re.IGNORECASE):
         return re.sub(r"(\B((a)|(e)|(i)|(o)|(u)))x(\1|\2|\3|\4|\5\w*\b)", r"\1%\2", string, re.IGNORECASE)
-    return string
+    return None
 
 
 def rule_5(string):
@@ -72,10 +72,17 @@ def rule_5(string):
     elif re.search(r'(\b\w*[eê])x([aáâãeéêiíoóôõuú]\B)', string, re.IGNORECASE):
         return re.sub(r'(\b\w*[eê])x([aáâãeéêiíoóôõuú]\B)', r"\1&\2", string, re.IGNORECASE)
     else:
-        return string
+        return None
+
+
+def rule_6(string):
+    if re.search(r"(\b\w*)[gj]([eéêií]\w*\b)", string, re.IGNORECASE):
+        return re.sub(r"(\b\w*)[gj]([eéêií]\w*\b)", r"\1*\2", string, re.IGNORECASE)
+    else:
+        return None
 
 
 if __name__ == '__main__':
 
     corrected = getattr(sys.modules[__name__], "rule_%s" % sys.argv[1])(sys.argv[2])
-    print(f"FRASE '{sys.argv[2]}' -> \033[32m {corrected} \033[m")
+    print(f"FRASE '{sys.argv[2]}' -> \033[32m {corrected if corrected else 'NÃO ALTERADO'} \033[m")
