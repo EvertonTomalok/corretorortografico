@@ -108,4 +108,4 @@ def rule_9(string):
 if __name__ == '__main__':
 
     corrected = getattr(sys.modules[__name__], "rule_%s" % sys.argv[1])(sys.argv[2])
-    print(f"FRASE '{sys.argv[2]}' -> \033[3 {'2m ' + corrected if corrected else '1m NÃO ALTERADO'} \033[m")
+    print(f"FRASE '{sys.argv[2]}' -> \033[3 {'2m ' + corrected if corrected != sys.argv[2] else '1m NÃO ALTERADO'} \033[m")
